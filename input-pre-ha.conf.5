@@ -1,0 +1,10 @@
+<source> 
+  @type tail 
+  @label @INGRESS 
+  path /var/log/haproxy/haproxy.log 
+  pos_file  /var/log/haproxy/haproxy.log.pos
+  tag haproxy.css
+  format /^(?<ha_month>\w+) (?<ha_day>\d+) (?<ha_time>[\d:]+) (?<host>\w+) (?<ps>\w+)\[(?<pid>\d+)\]: (?<c_ip>[\w\.]+):(?<c_port>\d+) \[(?<time>.+)\] (?<f_end>\S+) (?<b_server>\S+) (?<tq>\S+) (?<status_code>\d+) (?<bytes>\d+) (?<req_cookie>\S+) (?<res_cookie>\S+) (?<t_state>[\w-]+) (?<conn>\S+) (?<srv_queue>[\d-]+)\/(?<backend_queue>[\d-]+) "(?<method>\S+) (?<request>\S+) (?<req_version>\S+)"/ # log的正则匹配
+  time_format %d/%B/%Y:%H:%M:%S
+  read_from_head true   
+</source>

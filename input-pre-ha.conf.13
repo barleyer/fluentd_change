@@ -1,0 +1,11 @@
+<source> 
+  @type tail 
+  @label @INGRESS
+  path /var/log/haproxy/haproxy.log 
+  pos_file  /var/log/haproxy/haproxy.log.pos
+  tag haproxy.css
+  format /^(?<time>\S+\s+\S+\s+\S+)\s+(?<host>\S+)\s+(?<ident>[\w\/\.\-]*)(?:\[(?<pid>[0-9]+)\])?[^\:]*\:\s*(?<message>.*)$/ 
+  time_format %b %d %H:%M:%S
+  read_from_head true   
+  keep_time_key true
+</source>
